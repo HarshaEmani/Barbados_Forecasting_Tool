@@ -30,9 +30,15 @@ st.set_page_config(
 st.title(page_title)
 
 st.header("Statistics")
+st.markdown("The following table describes the distribution of Net Load Demand for each feeder.")
 st.dataframe(feeder_stats)
 
 st.title("Metrics")
+st.markdown("Train, Validation and Test metrics for Actual vs Predictions of normalized Net Load Demand for each feeder.")
+st.subheader("Metrics Used: ")
+st.markdown("RMSE - Root Mean Squared Error")
+st.markdown("MAE - Mean Absolute Error")
+st.markdown("SMAPE - Symmetric Mean Absolute Percentage Error")
 
 for i in range(feeders_metadata.shape[1]):
     feeder = feeders_metadata.iloc[i]
