@@ -1,0 +1,13 @@
+FeederName,Capacity,FeederCode,AreaCode,AreaName,Address,Latitude,Longitude,FileName,FileSaveName
+Arch Hall,5594,ST2B13 (kW),ST,St. Thomas,"Arch Hall, St. Thomas, Barbados",13.1765314,-59.6168188,Arch_Hall_ST2B13.csv,Arch_Hall_ST2B13
+Chapel Street,100,TY2B4 (kW),TY,Temple Yard,"Chapel Street, Temple Yard, Barbados",13.0981099,-59.6177033,Chapel_Street_TY2B4.csv,Chapel_Street_TY2B4
+Dukes,2409,ST2B15 (kW),ST,St. Thomas,"Dukes, St. Thomas, Barbados",13.1807628,-59.5946558,Dukes_ST2B15.csv,Dukes_ST2B15
+Fontabelle 1,3099,TY2B7 (kW),TY,Temple Yard,"Fontabelle 1, Temple Yard, Barbados",13.0980872,-59.6192473,Fontabelle_1_TY2B7.csv,Fontabelle_1_TY2B7
+Green Hill,7816,WA2B6 (kW),WA,Warrens,"Green Hill, Warrens, Barbados",13.133619,-59.6055964,Green_Hill_WA2B6.csv,Green_Hill_WA2B6
+Hanson (Belmont),546,BE2B1 (kW),BE,Belmont,"Hanson (Belmont), Belmont, Barbados",13.193887,-59.543198,Hanson_(Belmont)_BE2B1.csv,Hanson_(Belmont)_BE2B1
+Marhill St.,208,TY2B8 (kW),TY,Temple Yard,"Marhill St., Temple Yard, Barbados",13.0979541,-59.6135867,Marhill_St._TY2B8.csv,Marhill_St._TY2B8
+Ometa Mall,455,MA2B4 (kW),MA,Marhill Street,"Ometa Mall, Marhill Street, Barbados",13.0979541,-59.6135867,Ometa_Mall_MA2B4.csv,Ometa_Mall_MA2B4
+Sam Lords,4179,HA2B5 (kW),HA,Hampton,"Sam Lords, Hampton, Barbados",13.123538,-59.43457599999999,Sam_Lords_HA2B5.csv,Sam_Lords_HA2B5
+Sunbury,4648,HA2B2 (kW),HA,Hampton,"Sunbury, Hampton, Barbados",13.1228037,-59.4850445,Sunbury_HA2B2.csv,Sunbury_HA2B2
+Swan Street,14,TY2B6 (kW),TY,Temple Yard,"Swan Street, Temple Yard, Barbados",13.098258,-59.615728,Swan_Street_TY2B6.csv,Swan_Street_TY2B6
+Welches,1211,WA2B2 (kW),WA,Warrens,"Welches, Warrens, Barbados",13.1462404,-59.6060126,Welches_WA2B2.csv,Welches_WA2B2

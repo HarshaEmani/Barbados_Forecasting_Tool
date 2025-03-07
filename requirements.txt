@@ -1,0 +1,14 @@
+numpy
+streamlit
+pathlib
+pandas
+plotly
+fastapi
+uvicorn
+alembic
+sqlalchemy
+python-dotenv
+retry_requests
+openmeteo_requests
+requests_cache
+matplotlib
