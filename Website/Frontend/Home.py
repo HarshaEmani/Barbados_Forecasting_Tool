@@ -47,8 +47,9 @@ st.markdown("7. The tool is currently limited to forecasting for the next day. T
 st.markdown("8. The following quality attributes were prioritized at the time of building this tool: 'Reliability', 'Maintainability', 'Usability' and 'Scalability'.")
 
 st.subheader("Contributors")
-st.markdown("1. **Harsha Emani** - *MLOps Engineer, Gradudate Research Assistant, University of New Brunswick*")
-st.markdown("2. **Julian Cardenas Barrera** - *Associate Professor, ECE Department, University of New Brunswick*")
+st.markdown("1. **Dr. Julian Cardenas Barrera** - *Associate Professor, ECE Department, University of New Brunswick*")
+st.markdown("2. **Harsha Emani** - *MLOps Engineer, Gradudate Research Assistant, University of New Brunswick*")
+
 
 # st.sidebar.markdown("# Barbados Forecast")
 
