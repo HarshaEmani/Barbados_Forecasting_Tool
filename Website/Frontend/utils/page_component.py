@@ -33,9 +33,9 @@ def display_page_component(page_title, file_name):
 
     current_dir = Path(__file__).parent
 
-    train_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_train_results.csv"
-    val_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_val_results.csv"
-    test_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_test_results.csv"
+    train_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Train_Results.csv"
+    val_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Val_Results.csv"
+    test_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Test_Results.csv"
 
     st.header("Test Results")
     results_test = display_results(test_file_path)

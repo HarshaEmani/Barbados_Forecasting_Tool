@@ -10,7 +10,7 @@ import os
 from utils.page_component import display_page_component
 
 page_title = "Analysis"
-file_name = "Chapel_Street_TY2B4"
+
 current_dir = Path(__file__).parent
 feeder_stats_path = f"{Path(__file__).parent.parent.parent.parent}/Data/Filtered_Feeders_Metadata/Feeder_Stats.csv"
 feeders_metadata_path = (
@@ -19,9 +19,12 @@ feeders_metadata_path = (
 feeder_metrics_path = f"{Path(__file__).parent.parent.parent.parent}/Results/Metrics"
 
 feeder_stats = pd.read_csv(feeder_stats_path)
+feeders_metadata = pd.read_csv(feeders_metadata_path)
+
+
+feeder_stats["Feeder Capacity"] = feeders_metadata["Capacity"]
 feeder_stats.index.name = "index"
 
-feeders_metadata = pd.read_csv(feeders_metadata_path)
 
 st.set_page_config(
     page_title=page_title, page_icon="📊", layout="wide"  # Optional: adds an icon to the browser tab  # Optional: makes the layout wide
@@ -40,13 +43,16 @@ st.markdown("RMSE - Root Mean Squared Error")
 st.markdown("MAE - Mean Absolute Error")
 st.markdown("SMAPE - Symmetric Mean Absolute Percentage Error")
 
-for i in range(feeders_metadata.shape[1]):
+for i in range(feeders_metadata.shape[0]):
     feeder = feeders_metadata.iloc[i]
+    feeder_capacity = feeder["Capacity"]
     feeder_name = feeder["FeederName"]
     feeder_save_name = feeder["FileSaveName"]
+    # print(feeder_name, feeder_save_name, feeders_metadata.shape[1])
     feeder_metrics = pd.read_csv(f"{feeder_metrics_path}/{feeder_save_name}_Metrics.csv")
     feeder_metrics.rename(columns={"Unnamed: 0": "Metric"}, inplace=True)
     # feeder_metrics.index.name = "Metric"
 
     st.header(feeder_name)
+    st.markdown(f"**Capacity**: {feeder_capacity} kW")
     st.dataframe(feeder_metrics, width=500)

@@ -31,11 +31,22 @@ st.subheader("Forecasting")
 st.markdown("1. The data is retreived from a specified location/feeder.")
 st.markdown("2. The raw data is cleaned, preprocessed and resampled to 1 hour resolution, and combined with weather data for the feeder's location using the same methods used for training.")
 st.markdown("3. The saved models are loaded and used to forecast the Net Load Demand for validation and test sets.")
-st.markdown("3. Validation and testing are performed by using a walk-forward validation approach, by training the saved models using the previous day's data to predict the forecasted day's net load demand.")
+st.markdown("3. Validation and testing are performed by using a walk-forward testing approach, by using the saved models which take the input of previous day's data to predict the forecasted day's net load demand.")
 st.markdown("4. The process is repeated for each forecasted day.")
 st.markdown("5. The forecasting architecture is similar to the training process, where two deep learning models (ANN and LSTM) are initially used to generate forecasts and finally combined by a Recursive Lease Squares Combiner.")
 st.markdown("6. The generated forecasts are saved and used for analysis.")
 st.markdown("7. The tool also provides an option to search for specific days and download the forecasts.")
+
+st.subheader("Model Architecture")
+st.markdown("The following diagrams show the architecture of the models:")
+st.markdown("1. ANN Model Architecture")
+st.image("./Website/Frontend/ANN_Model_Architecture.png", caption="ANN Model Architecture", width=250)
+st.markdown("2. LSTM Model Architecture")
+st.image("./Website/Frontend/LSTM_Model_Architecture.png", caption="LSTM Model Architecture", width=250)
+st.markdown("3. RLS Combiner")
+st.markdown("The RLS Combiner is initially adapted on the training data. After training, the RLS Combiner is used to forecast based on the ANN and LSTM models predictions. On the next day, the RLS Combiner is adapted on the previous day's forecasted values vs actual values to generate optimal forecasts using online training process.")
+
+
 
 st.subheader("Assumptions and Future Work")
 st.markdown("1. The data sent to the models is assumed to be clean, preprocessed and sampled to 1 hour resolution.")
