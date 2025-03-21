@@ -22,11 +22,11 @@ st.markdown("2. Weather Features Extraction")
 st.markdown("3. Optimal Feature Selection")
 st.markdown("4. Feature Engineering")
 st.markdown("5. Data Normalization")
-st.markdown("6. Model Training")
-st.markdown("7. Model Forecasting")
-st.markdown("8. Model Evaluation")
-
-
+st.markdown("6. Data Combination")
+st.markdown("7. Data Splitting - Training, Validation, Test sets")
+st.markdown("8. Model Training on Training Set")
+st.markdown("9. Model Forecasting on Validation and Test Sets")
+st.markdown("10. Model Evaluation and Tuning")
 
 
 # st.subheader("Training")
