@@ -6,11 +6,13 @@ import plotly.express as px
 import plotly.io as pio
 from plotly import graph_objects as go
 
+architecture_image_path = Path(__file__).parent / "images" / "Architecture.png"
+
 st.set_page_config(page_title="Barbados Forecasting Tool", layout="wide")
 st.title("Barbados Forecasting Tool")
 
 st.subheader("Architecture")
-st.image("H:\My Drive\Barbados\Website\Frontend\images\Architecture.png")
+st.image(architecture_image_path)
 
 st.subheader("Methodology")
 st.markdown("This tool uses a combination of Deep Learning methods to generate day-ahead forecasts for the time series data for different feeders in Barbados.")
