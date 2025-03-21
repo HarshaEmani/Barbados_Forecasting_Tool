@@ -19,6 +19,7 @@ feeders_metadata_path = (
 feeder_metrics_path = f"{Path(__file__).parent.parent.parent.parent}/Metrics"
 
 feeder_stats = pd.read_csv(feeder_stats_path)
+feeder_stats = feeder_stats.round(2)
 feeder_stats.index.name = "index"
 
 feeders_metadata = pd.read_csv(feeders_metadata_path)
@@ -33,6 +34,10 @@ st.header("Statistics")
 st.dataframe(feeder_stats)
 
 st.title("Metrics")
+st.markdown("Metrics used:")
+st.markdown("- Symmetric Mean Absolute Percentage Error")
+st.markdown("- Mean Absolute Error")
+st.markdown("- Root Mean Squared Error")
 
 for i in range(feeders_metadata.shape[1]):
     feeder = feeders_metadata.iloc[i]
@@ -50,6 +55,7 @@ for i in range(feeders_metadata.shape[1]):
     feeder_test_metrics.set_index("Test_Metric", inplace=True, drop=True)
 
     combined_metrics = pd.concat([feeder_val_metrics.T, feeder_test_metrics.T], axis=0)
+    combined_metrics = combined_metrics.round(2)
     combined_metrics.index.name = "Metric"
 
     # feeder_metrics.index.name = "Metric"
