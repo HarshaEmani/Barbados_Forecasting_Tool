@@ -16,15 +16,12 @@ feeder_stats_path = f"{Path(__file__).parent.parent.parent.parent}/Data/Filtered
 feeders_metadata_path = (
     f"{Path(__file__).parent.parent.parent.parent}/Data/Filtered_Feeders_Metadata/Final_Selected_Feeders_Data_with_Coordinates.csv"
 )
-feeder_metrics_path = f"{Path(__file__).parent.parent.parent.parent}/Results/Metrics"
+feeder_metrics_path = f"{Path(__file__).parent.parent.parent.parent}/Metrics"
 
 feeder_stats = pd.read_csv(feeder_stats_path)
-feeders_metadata = pd.read_csv(feeders_metadata_path)
-
-
-feeder_stats["Feeder Capacity"] = feeders_metadata["Capacity"]
 feeder_stats.index.name = "index"
 
+feeders_metadata = pd.read_csv(feeders_metadata_path)
 
 st.set_page_config(
     page_title=page_title, page_icon="📊", layout="wide"  # Optional: adds an icon to the browser tab  # Optional: makes the layout wide
@@ -33,26 +30,32 @@ st.set_page_config(
 st.title(page_title)
 
 st.header("Statistics")
-st.markdown("The following table describes the distribution of Net Load Demand for each feeder.")
 st.dataframe(feeder_stats)
 
 st.title("Metrics")
-st.markdown("Train, Validation and Test metrics for Actual vs Predictions of normalized Net Load Demand for each feeder.")
-st.subheader("Metrics Used: ")
-st.markdown("RMSE - Root Mean Squared Error")
-st.markdown("MAE - Mean Absolute Error")
-st.markdown("SMAPE - Symmetric Mean Absolute Percentage Error")
 
-for i in range(feeders_metadata.shape[0]):
+for i in range(feeders_metadata.shape[1]):
     feeder = feeders_metadata.iloc[i]
-    feeder_capacity = feeder["Capacity"]
     feeder_name = feeder["FeederName"]
+    feeder_capacity = feeder["Capacity"]
     feeder_save_name = feeder["FileSaveName"]
-    # print(feeder_name, feeder_save_name, feeders_metadata.shape[1])
-    feeder_metrics = pd.read_csv(f"{feeder_metrics_path}/{feeder_save_name}_Metrics.csv")
-    feeder_metrics.rename(columns={"Unnamed: 0": "Metric"}, inplace=True)
+    feeder_val_metrics = pd.read_csv(f"{feeder_metrics_path}/{feeder_save_name}_Validation_Metrics.csv")
+    feeder_val_metrics.rename(columns={"Unnamed: 0": "Metric"}, inplace=True)
+    feeder_val_metrics.columns = [f"Validation_{col}" for col in feeder_val_metrics.columns]
+    feeder_val_metrics.set_index("Validation_Metric", inplace=True, drop=True)
+
+    feeder_test_metrics = pd.read_csv(f"{feeder_metrics_path}/{feeder_save_name}_Test_Metrics.csv")
+    feeder_test_metrics.rename(columns={"Unnamed: 0": "Metric"}, inplace=True)
+    feeder_test_metrics.columns = [f"Test_{col}" for col in feeder_test_metrics.columns]
+    feeder_test_metrics.set_index("Test_Metric", inplace=True, drop=True)
+
+    combined_metrics = pd.concat([feeder_val_metrics.T, feeder_test_metrics.T], axis=0)
+    combined_metrics.index.name = "Metric"
+
     # feeder_metrics.index.name = "Metric"
 
     st.header(feeder_name)
-    st.markdown(f"**Capacity**: {feeder_capacity} kW")
-    st.dataframe(feeder_metrics, width=500)
+    st.subheader(f"Capacity: {feeder_capacity}")
+    # st.dataframe(feeder_val_metrics, width=500)
+    # st.dataframe(feeder_test_metrics, width=500)
+    st.dataframe(combined_metrics, width=500)

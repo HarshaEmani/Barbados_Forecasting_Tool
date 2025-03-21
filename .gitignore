@@ -169,3 +169,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+Data/Feeder_Weather_Combined_Data
+Forecaster/Backup
+Forecaster/Backup_2
+Forecaster/Backup_3
+Forecaster/Backup_4
+Forecaster/catboost_info
+.cache.sqlite
+Processing/
+Saved_Models/

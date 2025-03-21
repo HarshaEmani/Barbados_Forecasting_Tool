@@ -12,10 +12,10 @@ import os
 def display_results(file_path):
     # Check if the file exists
     if os.path.exists(file_path):
-        data = pd.read_csv(file_path, index_col="Time")
-        data = data[["Actual", "RLS", "LSTM", "ANN"]]
+        data = pd.read_csv(file_path, index_col=0)
+        data = data[["Actual", "ANN_RLS", "LSTM_RLS", "Final_RLS"]]
+        data = data.round(2)
         fig = px.line(data)
-        # fig.show()
         st.plotly_chart(fig)
 
         return data
@@ -33,9 +33,9 @@ def display_page_component(page_title, file_name):
 
     current_dir = Path(__file__).parent
 
-    train_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Train_Results.csv"
-    val_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Val_Results.csv"
-    test_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_Test_Results.csv"
+    # train_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}/{file_name}_train_results.csv"
+    val_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}_Validation_Results.csv"
+    test_file_path = f"{current_dir.parent.parent.parent}/Results/{file_name}_Test_Results.csv"
 
     st.header("Test Results")
     results_test = display_results(test_file_path)
@@ -47,7 +47,7 @@ def display_page_component(page_title, file_name):
     st.subheader("Validation Values")
     st.dataframe(results_val)
 
-    st.header("Train Results")
-    results_train = display_results(train_file_path)
-    st.subheader("Train Values")
-    st.dataframe(results_train)
+    # st.header("Train Results")
+    # results_train = display_results(train_file_path)
+    # st.subheader("Train Values")
+    # st.dataframe(results_train)
