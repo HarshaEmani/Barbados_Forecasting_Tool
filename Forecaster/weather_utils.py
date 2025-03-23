@@ -31,6 +31,7 @@ class WeatherUtils:
             "shortwave_radiation_instant",
             "direct_normal_irradiance_instant",
             "diffuse_radiation_instant",
+            "weather_code",
         ]
         self.historic_url = "https://archive-api.open-meteo.com/v1/archive"
         self.forecast_url = "https://historical-forecast-api.open-meteo.com/v1/forecast"
