@@ -1,0 +1,22 @@
+lightgbm
+padasip
+sktime
+weather-utils
+itables
+plotly
+retry_requests
+requests_cache
+openmeteo_requests
+
+# The following packages are pre-installed in Google Colab.
+# Uncomment to install if needed:
+# !pip install pytz
+# !pip install numpy
+# !pip install pandas
+# !pip install plotly
+# !pip install matplotlib
+# !pip install scikit-learn
+# !pip install keras
+# !pip install scipy
+# !pip install seaborn
+# !pip install holidays
